@@ -18,13 +18,14 @@ from selenium.webdriver.support import expected_conditions
 class TestExit:
 
     def test_exit_button_exit(self, browser):
-        browser.get(urls.AUTO_URL)
-        returned_url = authorization(browser)
-        assert returned_url == urls.MAIN_URL
+        browser.get(urls.AUTH_URL)
+        button_order = authorization(browser)
+        assert button_order is not None
 
         browser.find_element(*main_locators.BUTTON_LK).click()
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(lk_locators.BUTTON_EXIT))
         browser.find_element(*lk_locators.BUTTON_EXIT).click()
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_IN))
-        assert browser.current_url == urls.AUTO_URL
+        button_in = browser.find_element(*auth_locators.BUTTON_IN)
+        assert button_in is not None
 

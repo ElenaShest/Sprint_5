@@ -17,13 +17,14 @@ def authorization(driver):
     email = data.EMAIL
     password = data.PASSWORD
 
-    driver.find_element(*auth_locators.FIELD_EMAIL_AUTO).send_keys(email)
-    driver.find_element(*auth_locators.FIELD_PASSWORD_AUTO).send_keys(password)
+    driver.find_element(*auth_locators.FIELD_EMAIL_AUTH).send_keys(email)
+    driver.find_element(*auth_locators.FIELD_PASSWORD_AUTH).send_keys(password)
     driver.find_element(*auth_locators.BUTTON_IN).click()
 
     WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(main_locators.BUTTON_ORDER))
+    button_order = driver.find_element(*main_locators.BUTTON_ORDER)
 
-    return driver.current_url
+    return button_order
 
 def open_reg_page(driver):
     driver.get(urls.MAIN_URL)
@@ -31,5 +32,6 @@ def open_reg_page(driver):
     WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_REG))
     driver.find_element(*auth_locators.BUTTON_REG).click()
     WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(reg_locators.BUTTON_REGISTRATION))
+    button_registration = driver.find_element(*reg_locators.BUTTON_REGISTRATION)
 
-    return driver.current_url
+    return button_registration

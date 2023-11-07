@@ -22,34 +22,41 @@ class TestAuthorization:
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(main_locators.BUTTON_LOGIN_IN_ACC))
         browser.find_element(*main_locators.BUTTON_LOGIN_IN_ACC).click()
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_IN))
-        assert browser.current_url == urls.AUTO_URL
-        returned_url = authorization(browser)
+        button_in = browser.find_element(*auth_locators.BUTTON_IN)
+        assert button_in is not None
+        button_order = authorization(browser)
 
-        assert returned_url == urls.MAIN_URL
+        assert button_order is not None
 
     def test_authorization_button_lk(self, browser):
         browser.get(urls.MAIN_URL)
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(main_locators.BUTTON_LK))
         browser.find_element(*main_locators.BUTTON_LK).click()
-        assert browser.current_url == urls.AUTO_URL
-        returned_url = authorization(browser)
+        WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_IN))
+        button_in = browser.find_element(*auth_locators.BUTTON_IN)
+        assert button_in is not None
+        button_order = authorization(browser)
 
-        assert returned_url == urls.MAIN_URL
+        assert button_order is not None
 
     def test_authorization_form_registration(self, browser):
         browser.get(urls.REG_URL)
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(reg_locators.BUTTON_LOGIN))
         browser.find_element(*reg_locators.BUTTON_LOGIN).click()
-        assert browser.current_url == urls.AUTO_URL
-        returned_url = authorization(browser)
+        WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_IN))
+        button_in = browser.find_element(*auth_locators.BUTTON_IN)
+        assert button_in is not None
+        button_order = authorization(browser)
 
-        assert returned_url == urls.MAIN_URL
+        assert button_order is not None
 
     def test_authorization_form_forgot_pass(self, browser):
         browser.get(urls.FORGOT_PASS_URL)
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(reg_locators.BUTTON_LOGIN))
         browser.find_element(*reg_locators.BUTTON_LOGIN).click()
-        assert browser.current_url == urls.AUTO_URL
-        returned_url = authorization(browser)
+        WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_IN))
+        button_in = browser.find_element(*auth_locators.BUTTON_IN)
+        assert button_in is not None
+        button_order = authorization(browser)
 
-        assert returned_url == urls.MAIN_URL
+        assert button_order is not None

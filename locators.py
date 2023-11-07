@@ -9,13 +9,13 @@ class MainLocators:
     TAB_BUNS = (By.XPATH, ".//span[text()='Булки']") # вкладка "Булки" на главной
     TAB_SAUCES = (By.XPATH, ".//span[text()='Соусы']") # вкладка "Соусы" на главной
     TAB_FILLINGS = (By.XPATH, ".//span[text()='Начинки']") # вкладка "Начинки" на главной
-    ACTIVE_TAB = (By.XPATH, ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']") # активная вкладка
+    ACTIVE_TAB = (By.XPATH, ".//div[contains(@class, 'tab_tab_type_current__2BEPc')]") # активная вкладка
 
 class AuthLocators:
     BUTTON_REG = (By.XPATH, ".//a[@href='/register']") # кнопка "Зарегистрироваться" на странице авторизации
     BUTTON_RESTORE_PASSWORD = (By.XPATH, ".//a[@href='/forgot-password']") # кнопка "Восстановить пароль" на странице авторизации
-    FIELD_EMAIL_AUTO = (By.XPATH, ".//input[@name='name']") # поле ввода "Email" при авторизации
-    FIELD_PASSWORD_AUTO = (By.XPATH, ".//input[@name='Пароль']") # поле ввода "Пароль" при авторизации
+    FIELD_EMAIL_AUTH = (By.XPATH, ".//input[@name='name']") # поле ввода "Email" при авторизации
+    FIELD_PASSWORD_AUTH = (By.XPATH, ".//input[@name='Пароль']") # поле ввода "Пароль" при авторизации
     BUTTON_IN = (By.XPATH, ".//button[text()='Войти']") # кнопка "Войти" при авторизации
 
 class RegLocators:
@@ -33,4 +33,4 @@ class LkLocators:
     TAB_BUNS = (By.XPATH, ".//span[text()='Булки']") # вкладка "Булки" на главной
     TAB_SAUCES = (By.XPATH, ".//span[text()='Соусы']") # вкладка "Соусы" на главной
     TAB_FILLINGS = (By.XPATH, ".//span[text()='Начинки']") # вкладка "Начинки" на главной
-    ACTIVE_TAB = (By.XPATH, ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']") # активная вкладка
+    ACTIVE_TAB = (By.XPATH, ".//div[contains(@class, 'tab_tab_type_current__2BEPc')]") # активная вкладка

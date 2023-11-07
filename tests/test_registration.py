@@ -16,23 +16,25 @@ from selenium.webdriver.support import expected_conditions
 class TestRegistration:
 
     def test_registration_success(self, browser):
-        returned_url = open_reg_page(browser)
-        assert returned_url == urls.REG_URL
+        button_registration = open_reg_page(browser)
+        assert button_registration is not None
 
         browser.find_element(*reg_locators.FIELD_NAME_REG).send_keys(data.USER_NAME)
         browser.find_element(*reg_locators.FIELD_EMAIL_REG).send_keys(data.RANDOM_EMAIL)
         browser.find_element(*reg_locators.FIELD_PASSWORD_REG).send_keys(data.PASSWORD)
         browser.find_element(*reg_locators.BUTTON_REGISTRATION).click()
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(auth_locators.BUTTON_REG))
-        assert browser.current_url == urls.AUTO_URL
+        button_reg = browser.find_element(*auth_locators.BUTTON_REG)
+        assert button_reg is not None
 
     def test_registration_short_pass_error(self, browser):
-        returned_url = open_reg_page(browser)
-        assert returned_url == urls.REG_URL
+        button_registration = open_reg_page(browser)
+        assert button_registration is not None
 
         browser.find_element(*reg_locators.FIELD_NAME_REG).send_keys(data.USER_NAME)
         browser.find_element(*reg_locators.FIELD_EMAIL_REG).send_keys(data.RANDOM_EMAIL)
         browser.find_element(*reg_locators.FIELD_PASSWORD_REG).send_keys(data.SHORT_PASSWORD)
         browser.find_element(*reg_locators.BUTTON_REGISTRATION).click()
         WebDriverWait(browser, 3).until(expected_conditions.visibility_of_element_located(reg_locators.ERROR_PASS))
-        assert browser.current_url == urls.REG_URL
+        error_pass = browser.find_element(*reg_locators.ERROR_PASS)
+        assert error_pass is not None
